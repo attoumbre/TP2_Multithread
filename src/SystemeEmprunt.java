@@ -19,6 +19,7 @@ class SystemeEmprunt {
 		for(int i = 0; i < NB_SITES; i++)
 			sites[i] = new Site(i);
 
+		
 		/* Instanciation des clients */
     Random r = new Random();
     for(int i = 0; i < NB_CLIENTS; i++) {
@@ -32,7 +33,22 @@ class SystemeEmprunt {
 
     /* Démarrage du camion et des clients */
     /* TODO */
-  }
+		
+		for(int i =0; i< clients.length; i++) {
+			clients[i].start();
+			camion.start();
+			
+			try {
+				clients[i].join();
+				camion.join();
+				
+			} catch (Exception e) {
+				
+			}
+		}
+}
+		
+	
 
   public static void main(String[] args) {
     new SystemeEmprunt();
